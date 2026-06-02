@@ -47,8 +47,7 @@ def generate_briefing():
 
     # 2. 使用 OpenAI 规范调用公司中转站
     try:
-       client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
-
+        client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
         
         prompt = f"""
         你是一个高级投资与技术趋势分析顾问。请将以下原始 XML/RSS 数据中今日最值得关注的 3-5 个核心动态进行提取。
@@ -118,7 +117,7 @@ def generate_briefing():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Proxy LLM execution failed: {str(e)}")
 
-    # 3. 核心修复：改用飞书标准消息卡片 (interactive) 承载 Markdown
+    # 3. 改用飞书标准消息卡片 (interactive) 承载 Markdown
     payload = {
         "msg_type": "interactive",
         "card": {
